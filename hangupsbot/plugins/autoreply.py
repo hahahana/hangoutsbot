@@ -93,6 +93,8 @@ def send_reply(bot, event, message):
             values["guest"] = guest # add the guest as extra info
             envelopes.append((target_conv, message.format(**values)))
 
+    elif message.format(**values).startswith("hissing_cat"):
+        yield from bot.coro_send_message(event.conv.id_, None, image_id="6198907435157665234")
     else:
         envelopes.append((event.conv, message.format(**values)))
 
